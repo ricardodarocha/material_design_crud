@@ -1,0 +1,177 @@
+:root {
+  --primary: rgb(128, 0, 70);
+  --silver: #cccc;
+  --gray: #545151;
+  --dark-gray: #1e1e1e;
+  --ciano: rgb(60, 60, 182);
+
+  --md-sys-color-on-surface: #1c1725;
+  --md-outlined-text-field-disabled-input-text-opacity: 0.7;
+
+  --_disabled-outline-width: 1.5px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.border-radius-6 {
+  border-radius: 6px;
+}
+
+.acessibilidade {
+  font-size: large;
+}
+
+.white {
+  background-color: white !important;
+}
+
+.responsive-img {
+  width: 30%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.hidden-input {
+  display: none;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 64px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar__left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar__logo {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #3f51b5;
+}
+
+.navbar__search {
+  max-width: 300px;
+  width: 100%;
+}
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mdc-text-field {
+  width: 100%;
+}
+
+.material-icons {
+  color: #444;
+}
+
+.mdc-icon-button {
+  --mdc-icon-button-size: 40px;
+}
+
+a {
+  color: rgb(42, 37, 37);
+  text-decoration: none;
+}
+
+img {
+  cursor: pointer;
+}
+
+md-outlined-text-field {
+  padding-top: 10px;
+}
+
+.primary {
+  color: var(--primary);
+}
+
+.gray-text {
+  color: var(--gray);
+}
+.ciano-text {
+  color: var(--ciano);
+}
+
+.offset {
+  margin-left: 20px;
+}
+
+.mdc-layout-grid__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  /* justify-content: center; */
+}
+
+.mdc-card {
+  width: 280px;
+}
+
+.mdc-card__media {
+  background-size: contain;
+  background-position: center;
+  height: 180px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-title {
+  margin-bottom: 24px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+.mdc-text-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.mdc-button {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.login-footer {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.login-footer a {
+  text-decoration: none;
+  color: #3f51b5;
+}

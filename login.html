@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Face</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+            {
+              "imports": {
+                "@material/web/": "https://esm.run/@material/web/"
+              }
+            }
+          </script>
+    <script type="module">
+        import '@material/web/all.js';
+        import { styles as typescaleStyles } from '@material/web/typography/md-typescale-styles.js';
+
+        document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
+</head>
+
+<body>
+
+    <div class="mdc-card login-card">
+        <h2 class="login-title">🐩 Petbook</h2>
+
+        <div class="mdc-layout-grid__cell">
+            <form id="formulario">
+                <div>
+                    <label for="login"> Login</label>
+                    <div class="mdc-text-field mdc-text-field--outlined">
+                        <span class="mdc-notched-outline">
+                            <span class="mdc-notched-outline__leading"></span>
+                            <span class="mdc-notched-outline__notch">
+                            </span>
+                            <span class="mdc-notched-outline__trailing"></span>
+                        </span>
+                        <input id="login" type="email" class="mdc-text-field__input" placeholder="Login" value="Admin"
+                            required>
+                        <i class="material-icons mdc-text-field__icon" tabindex="0" role="button">mail</i>
+                    </div>
+                </div>
+                <div>
+                    <label for="senha"> Senha</label>
+                    <div class="mdc-text-field mdc-text-field--outlined">
+                        <span class="mdc-notched-outline">
+                            <span class="mdc-notched-outline__leading"></span>
+                            <span class="mdc-notched-outline__notch">
+                            </span>
+                            <span class="mdc-notched-outline__trailing"></span>
+                        </span>
+                        <input id="senha" type="password" class="mdc-text-field__input" placeholder="Login" value="123456"
+                            required>
+                        <i class="material-icons mdc-text-field__icon" tabindex="0" role="button">lock</i>
+                    </div>
+                </div>
+   
+            </form>
+        </div>
+
+        <a href="index.html">
+            <button class="mdc-button mdc-button--raised">
+                <span class="mdc-button__ripple"></span>
+                <span class="mdc-button__label">Entrar</span>
+            </button>
+        </a>
+
+        <div class="login-footer">
+            <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script>
+        mdc.autoInit();
+    </script>
+
+</body>
+
+</html>
+
+
