@@ -26,7 +26,7 @@ body {
   height: 100vh;
   
   background-image: 
-    url('assets/pattern.png'),
+    url('/material_design_crud/assets/pattern.PNG'),
     linear-gradient(rgba(255, 255, 255, 0.2), 
     rgba(255, 255, 255, 0.0)); 
   background-size: 250px;
