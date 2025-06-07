@@ -81,6 +81,8 @@ function habilitarStatus() {
 
     //Paginacao
     const info_recno = document.getElementById("info-recno");
+    const info_recno2 = document.getElementById("info-recno2");
+    
     const info_record_count = document.getElementById("info-record-count");
     if (info_recno) {
         if (cursor < 0) {
@@ -91,8 +93,25 @@ function habilitarStatus() {
             info_recno.textContent = banco_dados.length;
         }
     }
+
+    // todo! Refatorar, para usar safeCursor
+    if (info_recno2) {
+        if (cursor < 0) {
+            info_recno2.textContent = 1; 
+        } else if (cursor < banco_dados.length) {
+            info_recno2.textContent = cursor + 1;
+        } else {
+            info_recno2.textContent = banco_dados.length;
+        }
+    }
+
     if (info_record_count) {
         info_record_count.textContent = "/ " + banco_dados.length;
+    }
+
+    const petCountElement = document.getElementById("pet-count");
+    if (petCountElement) {
+        petCountElement.setAttribute("data-badge", banco_dados.length);
     }
 }
 
@@ -423,7 +442,6 @@ function atualizarTela() {
 
     history.pushState({}, '', url);  
     console.log(`Localizado o registro: ${url.toString()}`);
-
 
     habilitar_edicao(false);
     habilitar_botoes();

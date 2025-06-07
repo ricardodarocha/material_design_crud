@@ -503,6 +503,15 @@ a img {
 
 @media (max-width: 600px) {
 
+   
+  .relative-left-float {
+    position: absolute;
+    top: 520px;
+    left: 20px; /* Adjust this to move it to the left of the image */
+    z-index: 9999;
+    padding: 5px;
+  }
+  
   .drag-area {
     width: auto;
   }
