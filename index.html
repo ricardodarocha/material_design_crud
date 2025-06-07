@@ -1,74 +1,156 @@
 <!DOCTYPE html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Try material design light to make a Petbook app.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>🦜 Petbook</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- TEMA PRINCIPAL -->
+    <!-- Basta trocar as cores primary e accent por exemplo indigo-pink, blue-red etc... -->
+    <!-- <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_orange-blue.min.css"> -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-deep_orange.min.css">
+
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="android.css">
+
+    <!-- vs.3 Atualiza Material design para vs. 3.0 -->
     <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script type="importmap">
-        {
-          "imports": {
-            "@material/web/": "https://esm.run/@material/web/"
-          }
-        }
-      </script>
+            {
+              "imports": {
+                "@material/web/": "https://esm.run/@material/web/"
+              }
+            }
+          </script>
     <script type="module">
         import '@material/web/all.js';
         import { styles as typescaleStyles } from '@material/web/typography/md-typescale-styles.js';
 
         document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
     </script>
+
 </head>
 
 <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
-    <header class="navbar">
-        <div class="navbar__left">
-            <a href="#" class="md-typescale-display-small primary">Petbook</a>
-
-            <div class="navbar__search mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon hidden-input">
-                <i class="material-icons mdc-text-field__icon" tabindex="0" role="button">buscar</i>
-                <input type="text" id="search-input" class="mdc-text-field__input" placeholder="Buscar...">
-                <div class="mdc-notched-outline">
-                    <div class="mdc-notched-outline__leading"></div>
-                    <div class="mdc-notched-outline__notch">
-                        <label for="search-input" class="mdc-floating-label">Buscar</label>
+        <header class="android-header mdl-layout__header mdl-layout__header--waterfall mdl-color--primary">
+            <div class="mdl-layout__header-row">
+                <a href="home.html">
+                    <span class="android-title mdl-layout-title">
+                        <img class="logo-image" src="assets/logo-white.png">
+                    </span>
+                </a>
+                <!-- Add spacer, to align navigation to the right in desktop -->
+                <div class="android-header-spacer mdl-layout-spacer"></div>
+                <div
+                    class="android-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                        <input class="mdl-textfield__input" type="text" id="search-field">
                     </div>
-                    <div class="mdc-notched-outline__trailing"></div>
                 </div>
-            </div>
-        </div>
-        
-        <div class="navbar__right">
-            <a href="index.html" class="material-icons mdc-icon-button" title="Início">home</a>
-            <a href="galeria.html" class="material-icons mdc-icon-button" title="Galeria">grid_view</a>
-            <a href="login.html" class="material-icons mdc-icon-button" title="Perfil">account_circle</a>
-        </div>
-    </header>
+                <!-- Right side navigation -->
+                <div class="android-navigation-container">
+                    <nav class="android-navigation mdl-navigation">
+                        <a class="-offset mdl-navigation__link mdl-typography--text-uppercase" href="index.html"><i
+                                class="material-icons ">home</i></a>
+                        <a class="-offset mdl-navigation__link mdl-typography--text-uppercase" href="galeria.html"><i
+                                class="material-icons">grid_view</i></a>
+                        <a class="-offset mdl-navigation__link mdl-typography--text-uppercase" href="login.html"><i
+                                class="material-icons">account_circle</i></a>
+                    </nav>
+                </div>
 
-    <div class="layout-container">
+                <span class="android-mobile-title mdl-layout-title">
+                    <img class="logo-image" src="assets/logo-white.png">
+                </span>
+
+                <!-- Right side context menu -->
+                <button class="android-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
+                    id="more-button">
+                    <i class="material-icons">more_vert</i>
+                </button>
+                <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
+                    <li class="mdl-menu__item"><i class="material-icons grey">home</i> Home</li>
+                    <li class="mdl-menu__item"><i class="material-icons grey">grid_view</i> Galeria</li>
+                    <li class="mdl-menu__item"><i class="material-icons grey">account_circle</i>Usuários</li>
+
+                    <li disabled class="mdl-menu__item"><i class="material-icons disabled">logout</i> Sair</li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- sidebar drawer  -->
+        <div class="android-drawer mdl-layout__drawer">
+            <span class="mdl-layout-title">
+                <img class="logo-image" src="assets/logo-white.png">
+            </span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="home.html"><i class="material-icons">arrow_back</i> Boas
+                    vindas</a>
+                <a class="mdl-navigation__link" href="index.html"><i class="material-icons">home</i> Home</a>
+                <a class="mdl-navigation__link" href="galeria.html"><i class="material-icons">grid_view</i> Galeria</a>
+                <div class="android-drawer-separator"></div>
+                <a class="mdl-navigation__link" href="login.html"><i class="material-icons">account_circle</i>
+                    Logout</a>
+            </nav>
+        </div>
+
+        <div id ="touchpad-area" class="android-content  color--off-white mdl-layout__content">
+            <!-- Âncora para ser usada com #top -->
+            <a name="top"></a>
             <div class="painel-esquerdo">
                 <div class="mdc-layout-grid__inner">
                     <div class="mdc-layout-grid__cell">
                         <div class="mdc-layout-grid__inner">
                             <div class="mdc-layout-grid__cell">
-            
+
                                 <div class="mdc-menu mdc-menu-surface"></div>
-            
-                                <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+
+                                <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical"
+                                    tabindex="-1">
                                     <li class="mdc-list-item" role="menuitem">
                                         <span class="mdc-list-item__ripple"></span>
                                         <a href="galeria.html" class="nowrap-link">
-                                            <button class="mdc-icon-button mdc-icon-button--on align-center" aria-label="Voltar" aria-pressed="true">
+                                            <button class="mdc-icon-button mdc-icon-button--on align-center"
+                                                aria-label="Voltar para a galeria" aria-pressed="true">
                                                 <span class="icon-text">
-                                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"
-                                                        fill="#1f1f1f">
-                                                        <path d="M400-240 160-480l240-240 56 58-142 142h486v80H314l142 142-56 58Z"></path>
+                                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24"
+                                                        viewBox="0 -960 960 960" width="24" fill="#1f1f1f">
+                                                        <path
+                                                            d="M400-240 160-480l240-240 56 58-142 142h486v80H314l142 142-56 58Z">
+                                                        </path>
                                                     </svg>
                                                     <span class="mdc-typography--body1">Voltar</span>
                                                 </span>
@@ -77,7 +159,8 @@
                                     </li>
                                 </ul>
 
-                                <select class="white border-radius-6 acessibilidade mdc-text-field--outlined mdc-select__anchor  mdc-text-field--filled"
+                                <select
+                                    class="white border-radius-6 acessibilidade mdc-text-field--outlined mdc-select__anchor  mdc-text-field--filled"
                                     name="input-tipo" id="input-tipo">
                                     <option value="Cachorro" selected>Cachorro</option>
                                     <option value="Camundongo">Camundongo</option>
@@ -93,7 +176,8 @@
                                     <div class="mdc-layout-grid__cell">
                                         <form id="formulario">
                                             <div>
-                                                <md-outlined-button id="btn-limpar" type="reset">Limpar</md-outlined-button>
+                                                <md-outlined-button id="btn-limpar"
+                                                    type="reset">Limpar</md-outlined-button>
                                                 <br><br>
                                             </div>
                                             <ul class="mdc-list" role="radiogroup">
@@ -101,39 +185,46 @@
                                                     <span class="mdc-list-item__ripple"></span>
                                                     <span class="mdc-list-item__graphic">
                                                         <div class="mdc-radio">
-                                                            <input class="mdc-radio__native-control" type="radio" id="radio-item-agitado"
-                                                                name="personalidade-radio-group" value="Agitado">
+                                                            <input class="mdc-radio__native-control" type="radio"
+                                                                id="radio-item-agitado" name="personalidade-radio-group"
+                                                                value="Agitado">
                                                             <div class="mdc-radio__background">
                                                                 <div class="mdc-radio__outer-circle"></div>
                                                                 <div class="mdc-radio__inner-circle"></div>
                                                             </div>
                                                         </div>
                                                     </span>
-                                                    <label class="mdc-list-item__text" for="radio-item-agitado">Agitado</label>
+                                                    <label class="mdc-list-item__text"
+                                                        for="radio-item-agitado">Agitado</label>
                                                 </li>
                                                 <li class="mdc-list-item" role="radio" aria-checked="true" tabindex="0">
                                                     <span class="mdc-list-item__ripple"></span>
                                                     <span class="mdc-list-item__graphic">
                                                         <div class="mdc-radio">
-                                                            <input class="mdc-radio__native-control" type="radio" id="radio-item-tranquilo"
-                                                                name="personalidade-radio-group" value="Tranquilo" checked>
+                                                            <input class="mdc-radio__native-control" type="radio"
+                                                                id="radio-item-tranquilo"
+                                                                name="personalidade-radio-group" value="Tranquilo"
+                                                                checked>
                                                             <div class="mdc-radio__background">
                                                                 <div class="mdc-radio__outer-circle"></div>
                                                                 <div class="mdc-radio__inner-circle"></div>
                                                             </div>
                                                         </div>
                                                     </span>
-                                                    <label class="mdc-list-item__text" for="radio-item-tranquilo">Tranquilo</label>
+                                                    <label class="mdc-list-item__text"
+                                                        for="radio-item-tranquilo">Tranquilo</label>
                                                 </li>
 
                                             </ul>
 
                                             <div>
-                                                <md-outlined-text-field id="input-nome" name="input-nome" label="Nome"
+                                                <md-outlined-text-field class="w-input" id="input-nome"
+                                                    name="input-nome" label="Nome" value=""></md-outlined-text-field>
+                                                <md-outlined-text-field class="w-input" id="input-categoria"
+                                                    name="input-categoria" label="Classe"
                                                     value=""></md-outlined-text-field>
-                                                <md-outlined-text-field id="input-categoria" name="input-categoria" label="Classe"
-                                                    value=""></md-outlined-text-field>
-                                                <md-outlined-text-field id="input-cor" name="input-cor" label="Cor" value=""></md-outlined-text-field>
+                                                <md-outlined-text-field class="w-input" id="input-cor" name="input-cor"
+                                                    label="Cor" value=""></md-outlined-text-field>
                                             </div>
 
                                         </form>
@@ -149,176 +240,203 @@
                     </div>
                 </div>
             </div>
-        
-        <md-dialog id="messageDialog">
-            <div slot="content" id="msgDialog">
-        
-            </div>
-        
-            <div slot="actions">
-                <span id="countdownLabel" style="margin-right: 8px; font-size: 0.9em; color: gray;">Fechando em 3...</span>
-        
-                <button id="okButton" class="mdc-button">OK</button>
-            </div>
-        </md-dialog>
 
-        <div class="painel-direito">         
-                <div id="drag-area"
+            <md-dialog id="messageDialog">
+                <div slot="content" id="msgDialog">
+
+                </div>
+
+                <div slot="actions">
+                    <span id="countdownLabel" style="margin-right: 8px; font-size: 0.9em; color: gray;">Fechando em
+                        3...</span>
+
+                    <button id="okButton" class="mdc-button">OK</button>
+                </div>
+            </md-dialog>
+
+            <div id="painel-direito" class="painel-direito color--off-white">
+                <div
                     class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-12-phone">
-                
-                    <!-- Imagem ilustrativa -->
-                    <img id="img-foto" src="assets/pikachu.png" alt="Imagem ilustrativa" class="responsive-img"
-                        style="max-width: 600px; height: auto; margin-bottom: 16px;">
-                </div>             
+
+                    <div class="img-grid">
+                        <!-- Left Panel (Icons only on mobile) -->
+                        <div class="left-panel mdc-layout-grid__cell mdc-layout-grid__cell--span-1-phone hide-desktop">
+                            <!-- Left icon or button -->
+                            <button id="btn-anterior"
+                                class="mdl-button mdl-js-button mdl-button--icon material-icons mdl-js-ripple-effect"
+                                onclick="acao_anterior()"> arrow_back_ios</button>
+                        </div>
+
+                        <!-- Center Panel (Main Content) -->
+                        <div
+                            class="center-panel mdc-layout-grid__cell mdc-layout-grid__cell--span-10-phone mdc-layout-grid__cell--span-12-tablet mdc-layout-grid__cell--span-12-desktop">
+                            <div id="drag-area">
+                                <img id="img-foto" src="assets/pikachu.png" alt="Imagem ilustrativa"
+                                    class="responsive-img" >
+                            </div>
+                        </div>
+
+                        <!-- Right Panel (Icons only on mobile) -->
+                        <div class="right-panel mdc-layout-grid__cell mdc-layout-grid__cell--span-1-phone hide-desktop">
+                            <!-- Right icon or button -->
+                            <button id="btn-proximo"
+                                class="mdl-button mdl-js-button mdl-button--icon material-icons mdl-js-ripple-effect"
+                                onclick="acao_proximo()"> arrow_forward_ios</button>
+                        </div>
+                    </div>
+
+                </div>
 
                 <div class="bottom-controls">
                     <!-- Botão de Upload com estilo Material Design -->
-                    <label for="upload" class="mdc-button mdc-button">
+                    <label for="upload" class="mdc-button mdc-button mob-hidden">
                         <input type="file" id="upload" accept=".png,.jpg,.jpeg,.bmp" class="hidden-input">
-                        <span class="mdc-button__ripple"></span>
-                        <span class="mdc-button__label">atualizar imagem</span>
+
                     </label>
-            
-                    <div class="mdc-card__action-icons">
-                        <button id="shareBtn" class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon"
-                            title="Share">share</button>
-                        <button class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon"
-                            title="More options">more_vert</button>
-                    </div>
+
                 </div>
+            </div>
+
+
+            <div class="mdc-layout-grid__cell">
+                <div class="mdc-card__actions">
+                    <div class="navigator mob-hidden wrap">
+                        <button id="btn-primeiro" class="mdc-icon-button mdc-icon-button--on"
+                            aria-label="Unstar this item" aria-pressed="true" onclick="acao_primeiro()">
+                            <div class="mdc-icon-button__ripple"></div>
+
+                            <svg id="svg-btn-primeiro" xmlns="http://www.w3.org/2000/svg" height="24px"
+                                viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                                <path
+                                    d="M240-240v-480h80v480h-80Zm440 0L440-480l240-240 56 56-184 184 184 184-56 56Z" />
+                            </svg>
+                        </button>
+
+                        <button id="btn-anterior" class="mdc-icon-button mdc-icon-button--on"
+                            aria-label="Unstar this item" aria-pressed="true" onclick="acao_anterior()">
+                            <div class="mdc-icon-button__ripple"></div>
+
+                            <svg id="svg-btn-anterior" xmlns="http://www.w3.org/2000/svg" height="24px"
+                                viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                                <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
+                            </svg>
+
+                        </button>
+
+                        <button id="btn-proximo" class="mdc-icon-button mdc-icon-button--on"
+                            aria-label="Unstar this item" aria-pressed="true" onclick="acao_proximo()">
+                            <div class="mdc-icon-button__ripple"></div>
+
+                            <svg id="svg-btn-proximo" xmlns="http://www.w3.org/2000/svg" height="24px"
+                                viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                                <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+                            </svg>
+
+                        </button>
+
+                        <button id="btn-ultimo" class="mdc-icon-button mdc-icon-button--on"
+                            aria-label="Unstar this item" aria-pressed="true" onclick="acao_ultimo()">
+                            <div class="mdc-icon-button__ripple"></div>
+                            <svg id="svg-btn-ultimo" xmlns="http://www.w3.org/2000/svg" height="24px"
+                                viewBox="0 -960 960 960" width="24px" fill="#1f1f1f">
+                                <path
+                                    d="m280-240-56-56 184-184-184-184 56-56 240 240-240 240Zm360 0v-480h80v480h-80Z" />
+                            </svg>
+
+                        </button>
+                    </div>
+                    <div class="actions mob-hidden">
+                        <button id="btn-inserir" class="mdc-button" disabled onclick="acao_inserir()">
+                            <span class="mdc-button__ripple"></span>
+                            <span class="mdc-button__label">Inserir</span>
+                        </button>
+                        <button id="btn-alterar" class="mdc-button" disabled onclick="acao_alterar()">
+                            <span class="mdc-button__ripple"></span>
+                            <span class="mdc-button__label">Alterar</span>
+                        </button>
+                        <button id="btn-excluir" class="mdc-button" disabled onclick="acao_excluir()">
+                            <span class="mdc-button__ripple"></span>
+                            <span class="mdc-button__label">Excluir</span>
+                        </button>
+                    </div>
+                    <div class=" mob-hidden">
+                        <button id="btn-salvar"
+                            class="mdc-button mdc-card__action mdc-card__action--button mdc-button--raised"
+                            onclick="acao_salvar()">
+                            <div class="mdc-button__ripple"></div>
+                            <span class="mdc-button__label">Salvar</span>
+                        </button>
+
+
+                        <button id="btn-cancelar" class="mdc-button mdc-card__action mdc-card__action--button"
+                            onclick="acao_cancelar()">
+                            <div class="mdc-button__ripple"></div>
+                            <span class="mdc-button__label">Cancelar</span>
+                        </button>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="mdc-layout-grid__cell  mob-hidden">
+                <span id="info-recno" class="offset mdc-typography--body1"></span>
+                <span id="info-record-count" class="mdc-typography--body1"></span>
+                <span id="info-mode" class="offset mdc-typography--body2 gray-text"></span>
+
+            </div>
+
+            <div class="mobile-nav">
+                <button class="nav-btn">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                        </svg>
+                    </span>
+                    <span class="nav-label">Home</span>
+                </button>
+                <button class="nav-btn">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                        </svg>
+                    </span>
+                    <span class="nav-label">Profile</span>
+                </button>
+                <button class="nav-btn">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z" />
+                        </svg>
+                    </span>
+                    <span class="nav-label">Explore</span>
+                </button>
+            </div>
+
+            <div id="mobile-navbar" class="mobile-navbar" style="display: flex;">
+                <a href="index.html" class="material-icons mdc-icon-button active" title="Início">
+                    <span class="material-icons">home</span>
+                    <span class="mdc-typography--body1">Início</span>
+                </a>
+                <a href="galeria.html" class="material-icons mdc-icon-button" title="Galeria">
+                    <span class="material-icons">grid_view</span>
+                    <span class="mdc-typography--body1">Galeria</span>
+                </a>
+                <a href="login.html" class="material-icons mdc-icon-button" title="Perfil">
+                    <span class="material-icons">account_circle</span>
+                    <span class="mdc-typography--body1">Perfil</span>
+                </a>
+            </div>
+
         </div>
-    
-    </div>
-    
-    <div class="mdc-layout-grid__cell">
-        <div class="mdc-card__actions">
-            <div class="navigator wrap">
-                <button id="btn-primeiro" class="mdc-icon-button mdc-icon-button--on" aria-label="Unstar this item"
-                    aria-pressed="true" onclick="acao_primeiro()">
-                    <div class="mdc-icon-button__ripple"></div>
-
-                    <svg id="svg-btn-primeiro" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                        width="24px" fill="#1f1f1f">
-                        <path d="M240-240v-480h80v480h-80Zm440 0L440-480l240-240 56 56-184 184 184 184-56 56Z" />
-                    </svg>
-                </button>
-
-                <button id="btn-anterior" class="mdc-icon-button mdc-icon-button--on" aria-label="Unstar this item"
-                    aria-pressed="true" onclick="acao_anterior()">
-                    <div class="mdc-icon-button__ripple"></div>
-
-                    <svg id="svg-btn-anterior" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                        width="24px" fill="#1f1f1f">
-                        <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
-                    </svg>
-
-                </button>
-                
-                <button id="btn-proximo" class="mdc-icon-button mdc-icon-button--on" aria-label="Unstar this item"
-                    aria-pressed="true" onclick="acao_proximo()">
-                    <div class="mdc-icon-button__ripple"></div>
-
-                    <svg id="svg-btn-proximo" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                        width="24px" fill="#1f1f1f">
-                        <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
-                    </svg>
-
-                </button>
-
-                <button id="btn-ultimo" class="mdc-icon-button mdc-icon-button--on" aria-label="Unstar this item"
-                    aria-pressed="true" onclick="acao_ultimo()">
-                    <div class="mdc-icon-button__ripple"></div>
-                    <svg id="svg-btn-ultimo" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                        width="24px" fill="#1f1f1f">
-                        <path d="m280-240-56-56 184-184-184-184 56-56 240 240-240 240Zm360 0v-480h80v480h-80Z" />
-                    </svg>
-
-                </button>
-            </div>
-            <div class="actions">
-                <button id="btn-inserir" class="mdc-button" disabled onclick="acao_inserir()">
-                    <span class="mdc-button__ripple"></span>
-                    <span class="mdc-button__label">Inserir</span>
-                </button>
-                <button id="btn-alterar" class="mdc-button" disabled onclick="acao_alterar()">
-                    <span class="mdc-button__ripple"></span>
-                    <span class="mdc-button__label">Alterar</span>
-                </button>
-                <button id="btn-excluir" class="mdc-button" disabled onclick="acao_excluir()">
-                    <span class="mdc-button__ripple"></span>
-                    <span class="mdc-button__label">Excluir</span>
-                </button>
-            </div>
-            <div class="">
-                <button id="btn-salvar" class="mdc-button mdc-card__action mdc-card__action--button mdc-button--raised"
-                    onclick="acao_salvar()">
-                    <div class="mdc-button__ripple"></div>
-                    <span class="mdc-button__label">Salvar</span>
-                </button>
-
-
-                <button id="btn-cancelar" class="mdc-button mdc-card__action mdc-card__action--button"
-                    onclick="acao_cancelar()">
-                    <div class="mdc-button__ripple"></div>
-                    <span class="mdc-button__label">Cancelar</span>
-                </button>
-            </div>
-
-
-        </div>
-    </div>
-    <div class="mdc-layout-grid__cell">
-        <span id="info-recno" class="offset mdc-typography--body1"></span>
-        <span id="info-record-count" class="mdc-typography--body1"></span>
-        <span id="info-mode" class="offset mdc-typography--body2 gray-text"></span>
-
-    </div>
-
-    <div class="mobile-nav">
-        <button class="nav-btn">
-            <span class="nav-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-                </svg>
-            </span>
-            <span class="nav-label">Home</span>
-        </button>
-        <button class="nav-btn">
-            <span class="nav-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                </svg>
-            </span>
-            <span class="nav-label">Profile</span>
-        </button>
-        <button class="nav-btn">
-            <span class="nav-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z" />
-                </svg>
-            </span>
-            <span class="nav-label">Explore</span>
-        </button>
-    </div>
-
-    <div id="mobile-navbar" class="mobile-navbar">
-        <a href="index.html" class="material-icons mdc-icon-button active" title="Início">
-            <span class="material-icons">home</span>
-            <span class="mdc-typography--body1">Início</span>
-        </a>
-        <a href="galeria.html" class="material-icons mdc-icon-button" title="Galeria">
-            <span class="material-icons">grid_view</span>
-            <span class="mdc-typography--body1">Galeria</span>
-        </a>
-        <a href="login.html" class="material-icons mdc-icon-button" title="Perfil">
-            <span class="material-icons">account_circle</span>
-            <span class="mdc-typography--body1">Perfil</span>
-        </a>
-    </div>
-
+        <script src="$$hosted_libs_prefix$$/$$version$$/material.min.js"></script>
 </body>
+
+
+
 <script src="script.js"></script>
 <script src="mobile.js"></script>
+
+
 
 </html>

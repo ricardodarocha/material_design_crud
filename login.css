@@ -24,6 +24,15 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  
+  background-image: 
+    url('assets/pattern.png'),
+    linear-gradient(rgba(255, 255, 255, 0.2), 
+    rgba(255, 255, 255, 0.0)); 
+  background-size: 250px;
+  background-repeat: repeat;  
+  background-blend-mode: overlay; /* Blends the pattern with the semi-transparent layer */
+
 }
 
 .border-radius-6 {

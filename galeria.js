@@ -33,26 +33,24 @@ function renderGaleria() {
 
     banco_dados.forEach(record => {
         const cardHTML = `
-        <div class="mdc-card">
-          <div class="mdc-card__media" style="background-image: url('${record.imagem}');"></div>
-          <div class="mdc-card__primary-action" tabindex="0">
-             <a class="mdc-card__primary-action" href='index.html?id=${record.id}' tabindex="0">
-                <div class="mdc-card__ripple"></div>
-                <div class="mdc-typography--subtitle1" style="padding: 16px;">${record.nome || "Sem descrição"}</div>
-            </a>
-            
-          </div>
-          <div class="mdc-card__actions">
-            <div class="mdc-card__action-icons">
-              <button class="material-icons mdc-icon-button" title="Compartilhar">share</button>
-              <button class="material-icons mdc-icon-button" title="Mais opções">more_vert</button>
-            </div>
-          </div>
+      <a href="index.html?id=${record.id}" class="mdc-card mdc-card--link" tabindex="0">
+        <div class="mdc-card__media" style="background-image: url('${record.imagem}');"></div>
+        <div class="mdc-card__primary-action" tabindex="0">
+            <div class="mdc-typography--subtitle1" style="padding: 16px;">${record.nome || "Sem descrição"}</div>
         </div>
+        <div class="mdc-card__actions">
+            <div class="mdc-card__action-icons">
+            <button class="material-icons mdc-icon-button" title="Compartilhar">share</button>
+            <button class="material-icons mdc-icon-button" title="Mais opções">more_vert</button>
+            </div>
+        </div>
+        <div class="mdc-card__ripple"></div> <!-- Ripple effect container -->
+        </a>
+
       `;
         container.insertAdjacentHTML('beforeend', cardHTML);
     });
-
+    container.insertAdjacentHTML('beforeend', `<div class="vertical-offset-100" ></div>`);
     mdc.autoInit();
 }
 document.addEventListener('DOMContentLoaded', renderGaleria);

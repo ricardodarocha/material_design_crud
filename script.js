@@ -490,89 +490,6 @@ function configurarInputImagem() {
     };
 }
 
-function share() {
-    document.getElementById('shareBtn').addEventListener('click', async () => {
-        const imgSrc = document.getElementById('img-foto').src;
-        const title = current_record().nome;
-        const pageUrl = window.location.href;
-
-        if (navigator.canShare && navigator.canShare({ files: [] })) {
-           
-            try {
-                const response = await fetch(imgElement.src);
-                const blob = await response.blob();
-                const file = new File([blob], 'imagem-compartilhada.jpg', { type: blob.type });
-
-                await navigator.share({
-                    title: title,
-                    text: `Que fofo ${title}`,
-                    files: [file]
-                });
-
-                console.log('Imagem compartilhada com sucesso!');
-
-                return;
-            } catch (error) {
-                console.error('Erro ao compartilhar:', error);
-                alert('Não foi possível compartilhar a imagem.');
-            }       
-        }
-
-        const encodedTitle = encodeURIComponent(title);
-        const encodedImg = encodeURIComponent(imgSrc);
-        const encodedUrl = encodeURIComponent(pageUrl);
-
-        const shareLinks = {
-            // facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedImg}&quote=${encodedTitle}`,
-            twitter: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedImg}`,
-            whatsapp: `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedImg}`,
-            telegram: `https://t.me/share/url?url=${encodedImg}&text=${encodedTitle}`,
-            linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedImg}`
-        };
-
-        const links = Object.entries(shareLinks)
-            .map(([name, url]) => `
-                <a href="${url}" class="botao-compartilhar" target="_blank" rel="noopener noreferrer">
-                ${name.charAt(0).toUpperCase() + name.slice(1)}
-                </a>
-            `)
-                        .join('<br>');
-
-                    const win = window.open('', '_blank', 'width=400,height=450');
-                    win.document.write(`
-            <html>
-                <head>
-                <title>Compartilhar</title>
-                <link rel="stylesheet" href="estilo.css">
-                <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap" rel="stylesheet">
-                </head>
-                <body class="compartilhar-container">
-                <h3 class="compartilhar-titulo">Compartilhar em:</h3>
-                ${links}
-                </body>
-            </html>
-            `);
-    });
-    }
-
-    function showDialog(message) {
-        const dialog = document.getElementById('messageDialog');
-        const msgDiv = document.getElementById('msgDialog');
-
-       msgDiv.textContent = message;
-        dialog.open = true;
-
-    
-    setTimeout(() => {
-        dialog.open = false;
-    }, 1200);
-        
-        dialog.onclick = () => {
-        clearTimeout(autoClose);  
-        dialog.open = false;      
-    };
-  }
-
 function habilitar_edicao(value = true) {
     console.log(`"habilitar_edicao(${value})`);
     for (campo in campos()) {
@@ -607,5 +524,95 @@ if (banco_dados.length == 0) {
 configurarInputImagem();
 verificarParametros();
 bind();
-share();
 
+//Evento pressionar e segurar para dispositivos móveis
+let pressTimer;
+const img_drag_area = document.getElementById("drag-area");
+
+function startPress_img(e) {
+    pressTimer = setTimeout(() => {
+        handleLongPress(e);
+    }, 1800);
+}
+
+function cancelPress() {
+    clearTimeout(pressTimer);
+}
+
+function handleLongPress(e) {
+    console.log("Long press detected!", e);
+
+    const input = document.getElementById('upload');
+    input.click();
+
+}
+
+img_drag_area.addEventListener('touchstart', startPress_img);
+img_drag_area.addEventListener('touchend', cancelPress);
+img_drag_area.addEventListener('touchmove', cancelPress);
+    
+// Avançado
+// Evento ao segurar o botao < anterior  proximo > ele vai pro último
+// Esta ação melhora a experiência do usuário, pois os botões |< primeiro último >| ficam escondidos no mobile por falta de espaço
+
+function startPress_first(e) {
+    pressTimer = setTimeout(() => {
+        acao_primeiro();
+    }, 1800);
+}
+function startPress_last(e) {
+    pressTimer = setTimeout(() => {
+        acao_ultimo();
+    }, 1800);
+}
+
+const btn_anterior = document.getElementById("btn-anterior");
+const btn_proximo = document.getElementById("btn-proximo");
+const navigator_buttons = [btn_anterior, btn_proximo];
+
+navigator_buttons.forEach(
+    btn => {
+        btn.addEventListener('touchend', cancelPress);
+        btn.addEventListener('touchmove', cancelPress);
+    }
+)
+
+btn_anterior.addEventListener('touchstart', startPress_first);
+btn_proximo.addEventListener('touchstart', startPress_last);
+
+// -------------------------------------------------------------------------------
+
+// Gesture swipe left and swipe right < >
+// O botão de movimentar para esquerda e direita pode ser difícil de acessar
+// Assim, usando gestos de movimento pra direita e esquerda melhora a ergonomia
+// e simplifica a experiência do usuário
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+const swipeThreshold = 60; //Distância mínima (px) para considerar um swipe
+
+const touch_area = document.getElementById('touchpad-area');
+
+touch_area.addEventListener('touchstart', function (e) {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+touch_area.addEventListener('touchend', function (e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipeGesture();
+});
+
+function handleSwipeGesture() {
+    const diff = touchEndX - touchStartX;
+
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            console.log('<- Swipe left ');
+            acao_anterior()
+        } else {
+            console.log('Swipe right -> ');
+            acao_proximo()
+        }
+    }
+}

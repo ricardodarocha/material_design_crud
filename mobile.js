@@ -10,3 +10,4 @@ function toggleMobileNavbar() {
 
 toggleMobileNavbar();
 window.addEventListener('resize', toggleMobileNavbar);
+

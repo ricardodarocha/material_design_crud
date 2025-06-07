@@ -1,19 +1,6 @@
-:root {
-  --primary: rgb(128, 0, 70);
-  --silver: #cccc;
-  --gray: #545151;
-  --dark-gray: #1e1e1e;
-  --ciano: rgb(60, 60, 182);
 
-  --md-sys-color-on-surface: #1c1725;
-  --md-outlined-text-field-disabled-input-text-opacity: 0.7;
+@import "./constants.css";
 
-  --_disabled-outline-width: 1.5px;
-}
-
-body {
-  padding-bottom: 106px;  
-}
 
 .border-radius-6 {
   border-radius: 6px;
@@ -25,12 +12,6 @@ body {
 
 .white {
   background-color: white !important;
-}
-
-.responsive-img {
-  width: 30%;
-  height: auto;
-  border-radius: 8px;
 }
 
 .hidden-input {
@@ -188,7 +169,7 @@ md-outlined-text-field {
   padding: 16px;
   border-radius: 8px;
   background: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 .painel-esquerdo {
@@ -201,12 +182,10 @@ md-outlined-text-field {
   justify-content: space-between;
   align-items: center;
   padding: 16px;
-  min-width: 300px;
 }
 
 .painel-direito img {
-  width: 200px;  
-  margin: 60px auto;
+    height: 35vh;
 }
 
 .painel-direito label {
@@ -265,10 +244,55 @@ md-outlined-text-field {
   margin: 0px 10px 0px 10px;
 }
 
+.color--off-white {
+    background-color: var(--off-white);
+}
+
+.mdc-card--link {
+  text-decoration: none;
+  position: relative; /* Needed for the ripple effect */
+  display: block; /* Ensure the card takes full width */
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.mdc-card--link:hover {
+  cursor: pointer;
+  transform: scale(1.05); /* Slightly scale up the card on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add a box-shadow for hover */
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* Ripple effect */
+.mdc-card__ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;  
+  border-radius: inherit; /* Ensure the ripple matches the card's border radius */
+  pointer-events: none; /* Prevent the ripple from blocking interactions */
+}
+
 @media (max-width: 870px) {
   .painel-esquerdo, .painel-direito{
     flex: 0 0 90%;
     
+  }
+
+  .mdc-card {
+    width: 90vw;
+  }
+
+  .painel-direito {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px;
+  }
+
+  .painel-direito img {
+    max-width: 80vw;
   }
  
   .navbar {
@@ -328,6 +352,12 @@ md-outlined-text-field {
 
     .nav-label {
       font-size: 14px;
+    }
+
+    .painel-direito img {
+      max-height: 300px;
+      height: 280px;
+      padding: 5px;
     }
   }
 }
