@@ -496,17 +496,22 @@ a img {
   display: none;
 }
 
-@media (max-width: 599px) {
+.left-panel,
+.right-panel {
+  display: none;
+}
+
+@media (max-width: 600px) {
+
+  .drag-area {
+    width: auto;
+  }
+
   .img-grid {
     display: flex !important;
     align-items: center;
     justify-content: center;
-  }
-
-  .hide-desktop {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
+    margin: auto;
   }
 
   .left-panel,
@@ -515,13 +520,18 @@ a img {
   }
 
   .center-panel {
-    width: 80vw;
+    width: 79vw; 
     padding: 0 60px;
+  }
+  
+  .left-panel,
+  .right-panel {
+    display: none;
   }
 }
 
 /**** Mobile layout ****/
-@media (max-width: 700px) {
+@media (max-width: 870px) {
   .android-navigation-container {
     display: none;
   }
@@ -532,6 +542,16 @@ a img {
 
   .android-title {
     display: none !important;
+  }
+
+  .hide-desktop {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gap-3 {   
+    gap: 15px;
   }
 
   .android-mobile-title {
@@ -611,10 +631,6 @@ a img {
     width: 90vw;
   }
 
-  .mdc-text-field--filled {
-    width: 90vw;
-  }
-
   .mob-hidden {
     display: none;
   }
@@ -623,4 +639,22 @@ a img {
     display: none;
   }
 
+  .painel-direito {
+    align-items: center;
+    overflow-y: scroll;
+    padding-bottom: 120px;
+  }
+  
+  @media (min-width: 600px) and (max-width: 870px) {
+    .hide-desktop {
+      display: none !important;
+    }
+    .painel-direito {
+      align-items: center;
+      overflow-y: scroll;
+      padding-bottom: 120px;
+    }
+
+  }
+  
 }
