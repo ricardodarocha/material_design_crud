@@ -662,6 +662,9 @@ touch_area.addEventListener('touchend', function (e) {
 });
 
 function handleSwipeGesture() {
+    if (modo == Status.EDITANDO) {
+        return
+    }
     const diff = touchEndX - touchStartX;
 
     if (Math.abs(diff) > swipeThreshold) {
