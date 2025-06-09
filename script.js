@@ -662,7 +662,7 @@ touch_area.addEventListener('touchend', function (e) {
 });
 
 function handleSwipeGesture() {
-    if (modo == Status.EDITANDO) {
+    if (modo != Status.NAVEGANDO) {
         return
     }
     const diff = touchEndX - touchStartX;
