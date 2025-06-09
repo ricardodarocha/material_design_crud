@@ -130,9 +130,30 @@
         </div>
 
         <div class="absolute-right hide-desktop gap-3">
-            <i class="material-icons mdl-color-text--primary">edit</i>
-            <i class="material-icons mdl-color-text--deep-orange">delete</i>
+            <button id="mob-btn-cancelar" class="mdl-button mdl-js-button mdl-button--icon material-icons mdl-js-ripple-effect 
+                        mdl-color-text--primary" onclick="acao_cancelar()"  > cancel </button>
+            
+                        <button id="mob-btn-alterar" class="mdl-button mdl-js-button mdl-button--icon material-icons mdl-js-ripple-effect 
+                        mdl-color-text--primary" onclick="acao_alterar()"> edit</button>
+        
+            <button id="mob-btn-excluir" class="mdl-button mdl-js-button mdl-button--icon material-icons mdl-js-ripple-effect 
+                        mdl-color-text--deep-orange" onclick="acao_excluir()"> delete</button>
+        
         </div>
+
+        <button 
+            id="mob-btn-inserir"
+            class="android-fab-add mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect hide-desktop"
+            onclick="acao_inserir()" >
+            <i class="material-icons">add</i>
+        </button>
+
+        <button 
+            id="mob-btn-salvar"
+            class="android-fab-save mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect hide-desktop"
+            onclick="acao_salvar()" style="background: #2ed577">
+            <i class="material-icons">check</i>
+        </button>
 
         <div id ="touchpad-area" class="android-content  color--off-white mdl-layout__content">
             <!-- Âncora para ser usada com #top -->
@@ -219,7 +240,6 @@
                                                     <label class="mdc-list-item__text"
                                                         for="radio-item-tranquilo">Tranquilo</label>
                                                 </li>
-
                                             </ul>
 
                                             <div>
@@ -231,15 +251,9 @@
                                                 <md-outlined-text-field class="w-input" id="input-cor" name="input-cor"
                                                     label="Cor" value=""></md-outlined-text-field>
                                             </div>
-
                                         </form>
-
                                     </div>
-
-
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -435,14 +449,11 @@
             </div>
 
         </div>
-        <script src="$$hosted_libs_prefix$$/$$version$$/material.min.js"></script>
+        <!-- <script src="$$hosted_libs_prefix$$/$$version$$/material.min.js"></script> -->
 </body>
-
-
 
 <script src="script.js"></script>
 <script src="mobile.js"></script>
 
-
-
 </html>
+

@@ -70,7 +70,17 @@ const atualizar_storage = (fn) => {
     if (typeof fn === 'function') {
         fn(banco_dados);
     }
-    localStorage.setItem(banco_dados_versao, JSON.stringify(banco_dados));
+
+    try {
+        localStorage.setItem(banco_dados_versao, JSON.stringify(banco_dados)); 
+    } catch (e) {
+        if (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
+            alert("Erro: armazenamento excedido. A imagem é muito grande!\n Tente excluir este registro ou carregar uma imagem menor");
+            // You might delete old items or warn the user
+        } else {
+            throw e;
+        }
+   }
 };
 
 function habilitarStatus() {
@@ -138,11 +148,34 @@ const habilitar_botoes = (fn) => {
     const btn_excluir = document.getElementById("btn-excluir");
     const btn_limpar = document.getElementById("btn-limpar");
 
+    //mobile
+    const mob_botao_inserir = document.getElementById("mob-btn-inserir");
+    const mob_botao_alterar = document.getElementById("mob-btn-alterar");
+    const mob_botao_excluir = document.getElementById("mob-btn-excluir");
+    const mob_botao_salvar = document.getElementById("mob-btn-salvar");
+    const mob_botao_cancelar = document.getElementById("mob-btn-cancelar");
+
     botao_primeiro.disabled = (modo != Status.NAVEGANDO) || (bof());
     botao_anterior.disabled = (modo != Status.NAVEGANDO) || (bof());
     botao_proximo.disabled = (modo != Status.NAVEGANDO) || (eof());
     botao_ultimo.disabled = (modo != Status.NAVEGANDO) || (eof());
 
+    if (modo == Status.NAVEGANDO) {
+        mob_botao_inserir.classList.remove("hide");
+        mob_botao_alterar.classList.remove("hide");
+        mob_botao_excluir.classList.remove("hide");
+        mob_botao_salvar.classList.add("hide");
+        mob_botao_cancelar.classList.add("hide");
+    } else {
+        mob_botao_inserir.classList.add("hide");
+        mob_botao_alterar.classList.add("hide");
+        mob_botao_excluir.classList.add("hide");
+        mob_botao_salvar.classList.remove("hide");
+        mob_botao_salvar.style.display = "block";
+        mob_botao_cancelar.classList.remove("hide");
+        mob_botao_cancelar.style.display = "block";
+    }
+    
     botao_inserir.disabled = (modo != Status.NAVEGANDO);
     botao_alterar.disabled = (modo != Status.NAVEGANDO);
     botao_salvar.disabled = (modo == Status.NAVEGANDO);
@@ -196,8 +229,9 @@ function insert(value) {
 
 //Remove o registro que está sendo exibido pelo índice "cursor"
 function excluir() {
-    if (cursor > -1) {
-        banco_dados.splice(cursor, 1);
+    let ccursor = safeCursor();
+    if (ccursor > -1) {
+        banco_dados.splice(ccursor, 1);
     }
     if (cursor >= 0) {
         cursor--;

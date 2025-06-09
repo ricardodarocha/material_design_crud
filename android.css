@@ -68,6 +68,30 @@ a img {
   border-width: 4px;
 }
 
+.android-fab-add {
+  position: absolute;
+  right: 15%;
+  bottom: 106px;
+  z-index: 3;
+  background: --deep-orange !important;
+  color: rgb(255, 255, 255) !important;
+  /* border-color: black; */
+  border-style: solid;
+  border-width: 4px;
+}
+
+.android-fab-save {
+  position: absolute;
+  right: 15%;
+  bottom: 106px;
+  z-index: 3;
+  background: --light_green !important;
+  color: rgb(255, 255, 255) !important;
+  /* border-color: black; */
+  border-style: solid;
+  border-width: 4px;
+}
+
 .android-mobile-title {
   display: none !important;
 }
@@ -496,6 +520,10 @@ a img {
   display: none;
 }
 
+.hide {
+  display: none !important;
+}
+
 .left-panel,
 .right-panel {
   display: none;
@@ -554,7 +582,7 @@ a img {
   }
 
   .hide-desktop {
-    display: flex !important;
+    display: flex;
     align-items: center;
     justify-content: center;
   }
