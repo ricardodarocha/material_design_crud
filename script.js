@@ -605,10 +605,21 @@ function handleLongPress(e) {
 
 }
 
-img_drag_area.addEventListener('touchstart', startPress_img);
-img_drag_area.addEventListener('touchend', cancelPress);
-img_drag_area.addEventListener('touchmove', cancelPress);
-    
+img_drag_area.addEventListener('touchstart', (e) => {
+    e.preventDefault(); 
+    startPress_img(e);
+}, { passive: false });
+
+img_drag_area.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    cancelPress(e);
+}, { passive: false });
+
+img_drag_area.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    cancelPress(e);
+}, { passive: false });
+
 // Avançado
 // Evento ao segurar o botao < anterior  proximo > ele vai pro último
 // Esta ação melhora a experiência do usuário, pois os botões |< primeiro último >| ficam escondidos no mobile por falta de espaço
