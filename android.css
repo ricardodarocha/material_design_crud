@@ -71,7 +71,7 @@ a img {
 .android-fab-add {
   position: absolute;
   right: 15%;
-  bottom: 106px;
+  bottom: 300px;
   z-index: 3;
   background: --deep-orange !important;
   color: rgb(255, 255, 255) !important;
@@ -83,7 +83,7 @@ a img {
 .android-fab-save {
   position: absolute;
   right: 15%;
-  bottom: 106px;
+  bottom: 300px;
   z-index: 3;
   background: --light_green !important;
   color: rgb(255, 255, 255) !important;
