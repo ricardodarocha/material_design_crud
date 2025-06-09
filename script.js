@@ -166,6 +166,8 @@ const habilitar_botoes = (fn) => {
         mob_botao_excluir.classList.remove("hide");
         mob_botao_salvar.classList.add("hide");
         mob_botao_cancelar.classList.add("hide");
+        
+        botao_salvar.classList.remove("mdc-button--raised");
     } else {
         mob_botao_inserir.classList.add("hide");
         mob_botao_alterar.classList.add("hide");
@@ -174,6 +176,10 @@ const habilitar_botoes = (fn) => {
         mob_botao_salvar.style.display = "block";
         mob_botao_cancelar.classList.remove("hide");
         mob_botao_cancelar.style.display = "block";
+
+        //Remove o destaque 
+        botao_salvar.offsetHeight;
+        botao_salvar.classList.add("mdc-button--raised");
     }
     
     botao_inserir.disabled = (modo != Status.NAVEGANDO);
