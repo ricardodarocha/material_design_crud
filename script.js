@@ -263,7 +263,7 @@ function bind() {
     if (tipo) { tipo.value = current_record().tipo || "" }
 
     const img_foto = document.getElementById("img-foto")
-    if (img_foto) { img_foto.setAttribute("src", current_record().imagem || "assets/blank.png") }
+    if (img_foto) { img_foto.setAttribute("src", current_record().imagem || "/material_design_crud/assets/blank.png") }
     
     setPersonalidade(current_record().personalidade)
     habilitarStatus();
@@ -279,7 +279,7 @@ function mock() {
         cor: "Yellow", 
         personalidade: "Agitado", 
         tipo: "Camundongo",
-        imagem: "assets/pikachu.png"
+        imagem: "/material_design_crud/assets/pikachu.png"
     }
     console.log(`cursor: ${cursor}`)
     console.log(`current: ${JSON.stringify(current_record())}`);
