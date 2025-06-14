@@ -1,6 +1,7 @@
 # Material design
 
 Referencias https://m3.material.io/components
+Demo https://ricardodarocha.github.io/material_design_crud/
 
 ## Sistema de Cadastro com navegação
 
