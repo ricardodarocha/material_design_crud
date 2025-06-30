@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="style.css">
+    <script src="login.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script type="importmap">
@@ -75,10 +76,11 @@
                             </span>
                             <span class="mdc-notched-outline__trailing"></span>
                         </span>
-                        <input id="login" type="email" class="mdc-text-field__input" placeholder="Login" value="Admin"
+                        <input name="login" id="login" type="email" class="mdc-text-field__input" placeholder="Login" value="Admin"
                             required>
                         <i class="material-icons mdc-text-field__icon" tabindex="0" role="button">mail</i>
                     </div>
+                    <span id="loginerro" class="red text-sm hidden">Login inválido</span>
                 </div>
                 <div>
                     <label for="senha"> Senha</label>
@@ -89,25 +91,36 @@
                             </span>
                             <span class="mdc-notched-outline__trailing"></span>
                         </span>
-                        <input id="senha" type="password" class="mdc-text-field__input" placeholder="Login" value="123456"
+                        <input name="senha" id="senha" type="password" class="mdc-text-field__input" placeholder="Login" value="admin"
                             required>
                         <i class="material-icons mdc-text-field__icon" tabindex="0" role="button">lock</i>
                     </div>
+                    <span id="senhaerro" class="red text-sm hidden">Senha inválida</span>
                 </div>
    
             </form>
         </div>
 
-        <a href="index.html">
-            <button class="mdc-button mdc-button--raised">
-                <span class="mdc-button__ripple"></span>
-                <span class="mdc-button__label">Entrar</span>
-            </button>
-        </a>
+       <button class="mdc-button mdc-button--raised" onclick="login()">
+            <span class="mdc-button__ripple"></span>
+            <span class="mdc-button__label">Entrar</span>
+        </button>
 
         <div class="login-footer">
             <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
         </div>
+
+        <dialog class="mdl-dialog">
+            <h4 class="mdl-dialog__title">Acesso negado 👤</h4>
+            <div class="mdl-dialog__content">
+                <p>
+                    Usuário ou senha inválida. <br>Para testes utilize <strong>admin</strong> <strong>admin</strong>
+                </p>
+            </div>
+            <div class="mdl-dialog__actions">
+                <button type="button" class="mdl-button close">Ok</button>
+            </div>
+        </dialog>
     </div>
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 <script>

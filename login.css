@@ -184,3 +184,15 @@ md-outlined-text-field {
   text-decoration: none;
   color: #3f51b5;
 }
+
+.mdc-text-field--invalid.mdc-text-field--outlined
+  .mdc-notched-outline__leading,
+.mdc-text-field--invalid.mdc-text-field--outlined
+  .mdc-notched-outline__trailing,
+.mdc-text-field--invalid.mdc-text-field--outlined
+  .mdc-notched-outline__notch {
+  border-color: var(--mdc-theme-error, #b00020) !important;
+  border-radius: 6px;
+  border-width: 2px;
+  border-style: solid;
+}
